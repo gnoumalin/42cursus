@@ -1,11 +1,13 @@
 void	*memcpy(void *restrict dest, const void *restrict src, site_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
+	if (dest == src || n == 0)
+		return (dest);
 	while(i < n)
 	{
-		dest[i] = src[i];
+		((char *)dest[i]) = ((char *)src[i]);
 		i++;
 	}
 	return (dest);
