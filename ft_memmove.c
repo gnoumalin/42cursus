@@ -1,4 +1,6 @@
-void	*memmove(void *dest, const void *src, size_t n)
+#include <libft.h>
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
@@ -22,18 +24,3 @@ void	*memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
-#include <stdio.h>
-int main() {
-    char str[20] = "Hello, World!";
-    char buffer[20];
-
-    // Utilisation de la fonction memmove pour copier une partie de la chaîne
-    ft_memmove(buffer, str + 7, 5);
-
-    // Affichage de la chaîne copiée
-    printf("Chaine copiée : %s\n", buffer);
-
-    return 0;
-}
-

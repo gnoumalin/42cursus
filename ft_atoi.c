@@ -1,3 +1,5 @@
+#include <libft.h>
+
 int	ft_atoi(const char *nptr)
 {
 	int		sign;
@@ -5,11 +7,12 @@ int	ft_atoi(const char *nptr)
 	
 	sign = 1;
 	nb = 0;
-	while(*nptr >= 9 && *nptr <= 13 || *nptr == 32)
+	while((*nptr >= 9 && *nptr <= 13)|| *nptr == 32)
 		nptr++;
-	if (*nptr == '-')
+	if (*nptr == '-' || *nptr == '+')
 	{	
-		sign = -1;
+		if (*nptr == '-')
+			sign = -1;
 		nptr++;
 	}
 	while (*nptr >= '0' && *nptr <= '9')

@@ -1,29 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-char    *ft_substr(char const *s, unsigned int start, size_t len);
-size_t  count_words(char const *s, char c);
-char    **ft_split(char const *s, char c);
-
-char    *ft_substr(char const *s, unsigned int start, size_t len)
-{
-        char            *dest;
-        unsigned int    i;
-
-        i = 0;
-        if (!s)
-                return (NULL);
-        dest = malloc((len + 1) * sizeof(char));
-        if (!dest)
-                return (NULL);
-        while (s[i + start] && i < len)
-        {
-                dest[i] = s[start + i];
-                i++;
-        }
-        dest[i] = '\0';
-        return (dest);
-}
-
+#include <libft.h>
 
 size_t	count_words(char const *s, char c)
 {
@@ -36,7 +11,7 @@ size_t	count_words(char const *s, char c)
 		count++;
 	while (s[i])
 	{
-		if (s[i] == c && s[i++] != c)
+		if (s[i] == c && s[i + 1] != c)
 			count++;
 		i++;
 	}

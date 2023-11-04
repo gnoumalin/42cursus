@@ -1,4 +1,6 @@
-char *ft_strnstr(const char *str, const char *to_find, size_t len)
+#include <libft.h>
+
+char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
 	size_t	len_to_find;
 	size_t	len_str;
