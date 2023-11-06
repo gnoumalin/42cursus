@@ -33,9 +33,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	while (*s != '\0')
 	{
-		if (*s == c)
-			s++;
-		else
+		if (*s != c)
 		{
 			i = 0;
 			while (*(s + i) != c && *(s + i) != '\0')
@@ -44,6 +42,8 @@ char	**ft_split(char const *s, char c)
 			j++;
 			s = s + i;
 		}
+		else
+			s++;
 	}
 	dest[j] = 0;
 	return (dest);
