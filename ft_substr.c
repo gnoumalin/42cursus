@@ -6,7 +6,7 @@
 /*   By: tmekhzou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 03:52:04 by tmekhzou          #+#    #+#             */
-/*   Updated: 2023/11/07 03:52:52 by tmekhzou         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:58:20 by tmekhzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char			*dest;
 	unsigned int	i;
 
-	i = 0;
-	if (s[start] == '\0')
+	if (!s)
 		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > (ft_strlen(s) - start))
+		len = (ft_strlen(s) - start);
+	i = 0;
 	dest = malloc((len + 1) * sizeof(char));
-	if (!dest || !s)
+	if (!dest)
 		return (NULL);
 	while (s[i + start] && i < len)
 	{

@@ -8,7 +8,6 @@ SRCS		= ft_memset.c \
 			ft_memcmp.c \
 			ft_strlen.c \
 			ft_strlcpy.c \
-			ft_strlcat.c \
 			ft_strchr.c \
 			ft_strrchr.c \
 			ft_strnstr.c \
@@ -28,16 +27,20 @@ SRCS		= ft_memset.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
-
-				
+			ft_isprint.c \
+			ft_striteri.c \
+			ft_isalpha.c \
+			ft_isdigit.c \
+			ft_isalnum.c \
+			ft_isascii.c \
+			ft_strlcat.c
 OBJS		= $(SRCS:%.c=%.o)
 
 FLAGS		= -Wall -Wextra -Werror 
 
-$(NAME):
-	gcc $(FLAGS) $(SRCS) /
-	ar rcs $(NAME) $(OBJS)
-
+$(NAME): $(OBJS)
+	ar crs $(NAME) $(OBJS)
+	clang $(FLAGS) -c $(SRCS) -I libft.a
 all: $(NAME)
 
 clean:
@@ -45,5 +48,8 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+so:
+	gcc -nostartfiles -fPIC $(FLAGS) $(SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS)
 
 re: fclean all

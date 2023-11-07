@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmekhzou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 03:38:12 by tmekhzou          #+#    #+#             */
-/*   Updated: 2023/11/07 14:38:52 by tmekhzou         ###   ########.fr       */
+/*   Created: 2023/11/07 11:27:09 by tmekhzou          #+#    #+#             */
+/*   Updated: 2023/11/07 11:30:22 by tmekhzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+int	ft_isprint(int c)
 {
-	size_t	i;
-	size_t	len;
-
-	i = 0;
-	len = 0;
-	while (src[len] != '\0')
-		len++;
-	if (size > 0)
-	{
-		while (src[i] != '\0' && i + 1 < size)
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
-	}
-	return (len);
+	if (c >= 32 && c <= 126)
+		return (1024);
+	else
+		return (0);
 }

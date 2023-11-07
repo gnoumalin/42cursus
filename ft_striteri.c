@@ -6,7 +6,7 @@
 /*   By: tmekhzou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 03:06:59 by tmekhzou          #+#    #+#             */
-/*   Updated: 2023/11/07 03:07:01 by tmekhzou         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:41:31 by tmekhzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 
 	i = 0;
 	if (!s || !f)
-		return (NULL);
+		return ;
 	while (s[i])
 	{
 		(*f)(i, &s[i]);

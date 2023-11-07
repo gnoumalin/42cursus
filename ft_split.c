@@ -6,7 +6,7 @@
 /*   By: tmekhzou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 02:18:52 by tmekhzou          #+#    #+#             */
-/*   Updated: 2023/11/07 03:34:03 by tmekhzou         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:50:45 by tmekhzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@ size_t	count_words(char const *s, char c)
 
 	count = 0;
 	i = 0;
-	if (s[0] != c)
-		count++;
+
 	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c)
+		if (s[i] != c)
+		{
 			count++;
-		i++;
+			while(s[i] && s[i] != c)
+				i++;
+		}	
+		else
+			i++;
 	}
 	return (count);
 }
