@@ -1,4 +1,16 @@
-#include <libft.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmekhzou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/07 02:03:29 by tmekhzou          #+#    #+#             */
+/*   Updated: 2023/11/07 02:10:54 by tmekhzou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_len(int n)
 {
@@ -6,7 +18,7 @@ int	ft_len(int n)
 
 	i = 1;
 	if (n < 0)
-	{	
+	{
 		n = n * -1;
 		i++;
 	}
@@ -20,9 +32,9 @@ int	ft_len(int n)
 
 char	*ft_rev(char *dest, int len)
 {
-	int	i;
+	int		i;
 	char	save;
-		
+
 	i = 0;
 	while (i < len / 2)
 	{
@@ -38,12 +50,12 @@ char	*ft_rev(char *dest, int len)
 char	*ft_itoa(int n)
 {
 	char	*dest;
-	int	i;
-	int	len;
-	int	neg;
+	int		i;
+	int		len;
+	int		neg;
 
 	if (n == -2147483648)
-        	return (ft_strdup("-2147483648"));
+		return (ft_strdup("-2147483648"));
 	i = 0;
 	len = ft_len(n);
 	if (n < 0)
@@ -51,7 +63,7 @@ char	*ft_itoa(int n)
 		n = n * -1;
 		neg = 1;
 	}
-	if (!(dest = (char *) malloc(sizeof (char) * (len + 1))))
+	if (!(dest = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	if (n == 0)
 	{	

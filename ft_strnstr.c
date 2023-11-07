@@ -1,4 +1,16 @@
-#include <libft.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmekhzou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/07 03:43:56 by tmekhzou          #+#    #+#             */
+/*   Updated: 2023/11/07 03:44:57 by tmekhzou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
@@ -14,10 +26,9 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	while (*str != '\0' && len >= len_to_find)
 	{
 		if (ft_memcmp(str, to_find, len_to_find) == 0)
-				return ((char *) str);
+			return ((char *) str);
 		str++;
 		len--;
 	}
 	return (NULL);
 }
-

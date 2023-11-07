@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmekhzou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 03:38:12 by tmekhzou          #+#    #+#             */
-/*   Updated: 2023/11/07 03:38:27 by tmekhzou         ###   ########.fr       */
+/*   Created: 2023/10/30 11:43:32 by tmekhzou          #+#    #+#             */
+/*   Updated: 2023/11/07 02:01:23 by tmekhzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+int	ft_isalpha(int c)
 {
-	size_t	i;
-	size_t	len;
-
-	i = 0;
-	len = 0;
-	if (dest == NULL || src == NULL)
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1024);
+	else
 		return (0);
-	while (src[len] != '\0')
-		len++;
-	if (size > 0)
-	{
-		while (src[i] != '\0' && i + 1 < size)
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
-	}
-	return (len);
 }

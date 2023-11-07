@@ -1,9 +1,21 @@
-#include <libft.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmekhzou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/07 02:18:52 by tmekhzou          #+#    #+#             */
+/*   Updated: 2023/11/07 03:34:03 by tmekhzou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 size_t	count_words(char const *s, char c)
 {
 	size_t	count;
-	int	i;
+	int		i;
 
 	count = 0;
 	i = 0;
@@ -18,17 +30,14 @@ size_t	count_words(char const *s, char c)
 	return (count);
 }
 
-
 char	**ft_split(char const *s, char c)
 {
-	size_t	nb_words;
 	char	**dest;
 	size_t	i;
 	size_t	j;
-	
+
 	j = 0;
-	nb_words = count_words(s, c);
-	dest = malloc(sizeof (char *) * (nb_words + 1));
+	dest = malloc(sizeof (char *) * ((count_words(s, c)) + 1));
 	if (!dest)
 		return (NULL);
 	while (*s != '\0')
