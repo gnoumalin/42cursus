@@ -6,7 +6,7 @@
 /*   By: tmekhzou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 02:03:29 by tmekhzou          #+#    #+#             */
-/*   Updated: 2023/11/07 11:03:42 by tmekhzou         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:17:26 by tmekhzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	ft_len(int n)
 	i = 1;
 	if (n < 0)
 	{
-		n = n * -1;
-		i++;
+		neg = 1;
+		n = -n;
 	}
 	while (n >= 10)
 	{
@@ -30,28 +30,59 @@ int	ft_len(int n)
 	return (i);
 }
 
-char	*ft_rev(char *dest, int len)
+char	*ft_rev(char *dest, int n)
 {
 	int		i;
 	char	save;
 
 	i = 0;
-	while (i < len / 2)
+	while (i < ft_len(n) / 2)
 	{
 		save = dest[i];
-		dest[i] = dest[len - 1 - i];
-		dest[len - 1 - i] = save;
+		dest[i] = dest[ft_len(n) - 1 - i];
+		dest[ft_len(n) - 1 - i] = save;
 		i++;
 	}
-	dest[len] = '\0';
+	dest[ft_len(n)] = '\0';
 	return (dest);
+}
+
+char	*allocate(char *dest, int n)
+{
+	int		len;
+	
+	len = ft_len(n);
+	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dest)
+		return (NULL);
+	return (dest);
+}
+
+char	*fill_tab(char *dest, int n)
+{
+	int		i;
+	int		neg;
+
+	if (n < 0)
+	{
+		n = -n;
+		neg = 1;
+	}
+	i = 0;
+	while (n >= 1)
+	{
+		dest[i++] = (n % 10) + '0';
+		n = n / 10;
+	}
+	if (neg == 1)
+		dest[i++] = '-';
+	return dest;
 }
 
 char	*ft_itoa(int n)
 {
 	char	*dest;
 	int		i;
-	int		len;
 	int		neg;
 
 	if (n == -2147483648)
@@ -59,26 +90,13 @@ char	*ft_itoa(int n)
 	if (n == 0)
 		return(ft_strdup("0"));
 	i = 0;
-	len = ft_len(n);
 	if (n < 0)
 	{
 		n = n * -1;
 		neg = 1;
 	}
-	if (!(dest = (char *)malloc(sizeof(char) * (len + 1))))
+	if (!(allocate(dest, n)))
 		return (NULL);
-	if (n == 0)
-	{	
-		*dest = '0';
-		return (dest);
-	}
-	while (n >= 1)
-	{
-		dest[i++] = (n % 10) + '0';
-		n = n / 10;
-	}
-	if (neg)
-		dest[i++] = '-';
-	ft_rev(dest, len);
+	ft_rev(dest, n);
 	return (dest);
 }
