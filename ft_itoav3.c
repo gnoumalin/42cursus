@@ -35,7 +35,6 @@ char	*ft_rev(char *dest, int len)
 	return (dest);
 }
 
-#include <stdio.h>
 char	*ft_itoa(int n)
 {
 	char	*dest;
@@ -56,24 +55,18 @@ char	*ft_itoa(int n)
 	}
 	if (!(dest = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	//dest = ft_calloc(len + 1, sizeof(char));
-	/*if (n == 0)
+	if (n == 0)
 	{	
-		dest[i] = '0';
-		printf("%c", dest[i]);
+		*dest = '0';
 		return (dest);
-	}*/
+	}
 	while (n >= 1)
 	{
-		dest[i] = (n % 10) + '0';
+		dest[i++] = (n % 10) + '0';
 		n = n / 10;
-		i++;
 	}
 	if (neg)
-	{	
-		dest[i] = '-';
-		i++;
-	}	
+		dest[i++] = '-';
 	ft_rev(dest, len);
 	return (dest);
 }

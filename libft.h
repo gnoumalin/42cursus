@@ -42,4 +42,7 @@ int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+char    *allocate(int n);
+char    *fill_tab(char *dest, int n);
+
 #endif

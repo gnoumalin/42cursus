@@ -36,7 +36,7 @@ SRCS		= ft_memset.c \
 			ft_strlcat.c
 OBJS		= $(SRCS:%.c=%.o)
 
-FLAGS		= -Wall -Wextra -Werror 
+FLAGS		= -Wall -Wextra -Werror
 
 $(NAME): $(OBJS)
 	ar crs $(NAME) $(OBJS)
