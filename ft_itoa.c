@@ -19,8 +19,8 @@ int	ft_len(int n)
 	i = 1;
 	if (n < 0)
 	{
-		neg = 1;
 		n = -n;
+		i++;
 	}
 	while (n >= 10)
 	{
@@ -30,27 +30,30 @@ int	ft_len(int n)
 	return (i);
 }
 
-char	*ft_rev(char *dest, int n)
+char	*ft_rev(char *dest)
 {
-	int		i;
+	size_t	i;
 	char	save;
+	size_t	len;
 
+	len =ft_strlen(dest);
 	i = 0;
-	while (i < ft_len(n) / 2)
+	while (i < len / 2)
 	{
 		save = dest[i];
-		dest[i] = dest[ft_len(n) - 1 - i];
-		dest[ft_len(n) - 1 - i] = save;
+		dest[i] = dest[len - 1 - i];
+		dest[len - 1 - i] = save;
 		i++;
 	}
-	dest[ft_len(n)] = '\0';
+	dest[ft_strlen(dest)] = '\0';
 	return (dest);
 }
 
-char	*allocate(char *dest, int n)
+char	*allocate(int n)
 {
-	int		len;
-	
+	int	len;
+	char	*dest;
+
 	len = ft_len(n);
 	dest = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dest)
@@ -76,27 +79,23 @@ char	*fill_tab(char *dest, int n)
 	}
 	if (neg == 1)
 		dest[i++] = '-';
+	dest[i] = '\0';
+	ft_rev(dest);
 	return dest;
 }
 
 char	*ft_itoa(int n)
 {
 	char	*dest;
-	int		i;
-	int		neg;
 
+	dest = NULL;
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	if (n == 0)
 		return(ft_strdup("0"));
-	i = 0;
-	if (n < 0)
-	{
-		n = n * -1;
-		neg = 1;
-	}
-	if (!(allocate(dest, n)))
+	dest = allocate(n);
+	if (!dest)
 		return (NULL);
-	ft_rev(dest, n);
+	fill_tab(dest, n);
 	return (dest);
 }
