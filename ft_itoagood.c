@@ -33,14 +33,31 @@ char	*ft_rev(char *dest, int len)
 	}
 	dest[len] = '\0';
 	return (dest);
-	ft_rev(dest, i);
 }
 
-char	*fill_tab(char *dest, int n, int neg)
+#include <stdio.h>
+char	*ft_itoa(int n)
 {
-	int	i;
-	
+	char	*dest;
+	int		i;
+	int		len;
+	int		neg;
+
+	neg = 0;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n == 0)
+		return(ft_strdup("0"));
 	i = 0;
+	len = ft_len(n);
+	if (n < 0)
+	{
+		n = -n;
+		neg = 1;
+	}
+	dest = ft_calloc(len + 1, sizeof(char));
+	if (!dest)
+		return(NULL);
 	while (n >= 1)
 	{
 		dest[i] = (n % 10) + '0';
@@ -51,32 +68,8 @@ char	*fill_tab(char *dest, int n, int neg)
 	{	
 		dest[i] = '-';
 		i++;
-	}
+	}	
 	ft_rev(dest, i);
-	return (dest);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*dest;
-	int		len;
-	int		neg;
-
-	neg = 0;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (n == 0)
-		return(ft_strdup("0"));
-	len = ft_len(n);
-	if (n < 0)
-	{
-		n = -n;
-		neg = 1;
-	}
-	dest = ft_calloc(len + 1, sizeof(char));
-	if (!dest)
-		return(NULL);
-	fill_tab(dest, n, neg);
 	return (dest);
 }
 

@@ -51,8 +51,7 @@ char	**ft_split(char const *s, char c)
 			i = 0;
 			while (*(s + i) != c && *(s + i) != '\0')
 				i++;
-			dest[j] = ft_substr(s, 0, i);
-			j++;
+			dest[j++] = ft_substr(s, 0, i);
 			s = s + i;
 		}
 		else
